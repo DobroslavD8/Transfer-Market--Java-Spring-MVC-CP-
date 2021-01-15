@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Edit Footballer</title>
+        <meta charset="ISO-8859-1">
+    </head>
+    <body>
+        <div>
+            <h1>Edit footballer details</h1>
+            <h3><a href="/">Back to the list</a></h3>
+            <br />
+            <form th:object="${footballer}" th:action="@{/save_footballer}" method="post">
+            
+                <table border="1">
+                    <tr>
+                        <td>System ID</td>
+                        <td><input type="text" th:field="*{id}" readonly="readonly" /></td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td><input type="text" th:field="*{firstname}" required="required" pattern="[A-Za-z]{1,20}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td><input type="text" th:field="*{lastname}" required="required" pattern="[A-Za-z]{1,20}" /></td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit">Update</button></td>
+                    </tr>
+                </table>
+        </div>
+    </body>
+</html>

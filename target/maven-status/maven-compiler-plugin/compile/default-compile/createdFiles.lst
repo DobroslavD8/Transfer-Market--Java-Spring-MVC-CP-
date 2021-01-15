@@ -1,0 +1,6 @@
+com\javaCP\CourseProject\repository\FootballerRepository.class
+com\javaCP\CourseProject\service\FootballerService.class
+WebSecurityConfig.class
+com\javaCP\CourseProject\CourseProjectApplication.class
+com\javaCP\CourseProject\model\Footballer.class
+com\javaCP\CourseProject\controller\FootballerController.class

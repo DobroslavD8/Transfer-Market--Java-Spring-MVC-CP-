@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+   
+    <head>        
+        <style>
+body {
+  background-image: url('https://1.bp.blogspot.com/-ahkn5ozr7nU/XrKvRSMF6TI/AAAAAAAB7NY/kE08zvtZdSwD_VRAziFwMPVLBZl_vu3CwCNcBGAsYHQ/s1600/background_v8_s22.webp');
+}
+</style>
+        <meta charset="ISO-8859-1">
+        <title>Index</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    </head>
+    <body>
+            <h1 style="text-align: center; color: white">Welcome!</h1>
+    &nbsp;
+    <form style="text-align: center" th:action="@{/logout}" method="post">
+        <input style="text-align: right" type="submit" value="Logout" />
+    </form>
+    <div sec:authorize="hasAnyAuthority('CREATOR', 'ADMIN')">
+        <a href="/new">Create New Product</a>
+    </div>
+    
+    <div sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR')">
+    <a th:href="/@{'/edit/' + ${product.id}}">Edit</a>
+</div>
+    <div sec:authorize="hasAuthority('ADMIN')">
+    <a th:href="/@{'/delete/' + ${product.id}}">Delete</a>
+</div>
+        <div>
+            <h2 style="text-align: center;"><a href="new_add">Add football player to Transfer List</a></h2>
+            <br />
+            
+                <form style="text-align: left; padding-left: 160px;" th:action="@{/}" method="get">
+                    <input id="search" type="text" name="keyword">
+                    <button type="submit" style="margin-bottom: 15px;">Search</button>   
+                </form>
+            
+            <div layout:fragment="content" class="container mySpace">
+                <div class="card">
+                    <div class="card-body">
+                         <table class="table table-hover" style="background-color: whitesmoke;">
+                <thead>
+                    <tr>
+                        <td>Footballer Id</td>
+                        <td>First Name</td>
+                        <td>Last Name</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
+                    </tr>
+                </thead>
+                <tbody>                   
+                     <th:block th:each="footballers : ${getAllFootballers}">
+                        <tr>
+                            <td th:text="${footballers.id}">System ID</td>
+                            <td th:text="${footballers.firstname}">Name</td>
+                            <td th:text="${footballers.lastname}">Last Name</td>
+                      
+                            <td><a th:href="@{'/edit/' + ${footballers.id}}" class="btn btn-dark" style="background-color: darkgray;">Edit Player</a></td>
+                            <td><a th:href="@{'/delete/' + ${footballers.id}}" class="btn btn-dark" style="background-color: darkgray;">Delete from TF</a></td>
+                        </tr>
+                    </th:block>
+                </tbody>
+            </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

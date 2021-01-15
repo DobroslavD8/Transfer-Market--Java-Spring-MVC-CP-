@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+   
+    <head>
+        <meta charset="ISO-8859-1">
+        <title>Index</title>
+    </head>
+    <body>
+        <div>
+            <h2><a href="new_add">Add football player to Transfer List</a></h2>
+            <br />
+            
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td>Footballer Id</td>
+                        <td>First Name</td>
+                        <td>Last Name</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
+                    </tr>
+                </thead>
+                <tbody>                   
+                     <th:block th:each="footballers : ${getAllFootballers}">
+                        <tr>
+                            <td th:text="${footballers.id}">System ID</td>
+                            <td th:text="${footballers.firstname}">Name</td>
+                            <td th:text="${footballers.lastname}">Last Name</td>
+                      
+                            <td><a th:href="@{'/edit/' + ${footballers.id}}">Edit Player</a></td>
+                            <td><a th:href="@{'/delete/' + ${footballers.id}}">Delete from TF</a></td>
+                        </tr>
+                    </th:block>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
