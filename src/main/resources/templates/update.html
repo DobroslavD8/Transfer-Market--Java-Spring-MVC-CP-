@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head>
+        <style>
+            body {
+                    background-image: url('https://1.bp.blogspot.com/-ahkn5ozr7nU/XrKvRSMF6TI/AAAAAAAB7NY/kE08zvtZdSwD_VRAziFwMPVLBZl_vu3CwCNcBGAsYHQ/s1600/background_v8_s22.webp');
+                  }
+        </style>
         <title>Edit Footballer</title>
         <meta charset="ISO-8859-1">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     </head>
     <body>
         <div style="text-align: center">
-            <h2 style="text-align: center">Welcome!</h2>
+            <h1 style="text-align: center; color: white">Welcome!</h1>
 
             <form th:action="@{/logout}" method="post">
                 <input type="submit" value="Logout" />
             </form>
-            <h1>Edit details about the footballer</h1>
+            <h1 style="text-align: center; color: white">Edit details about the footballer</h1>
             <h3><a href="/">Back to the list</a></h3>
         </div>
         <div>
@@ -23,7 +28,7 @@
                     <div class="card-body">
             <form th:object="${footballer}" th:action="@{/save_footballer}" method="post">
             
-                 <table class="table table-hover">
+                 <table class="table table-hover" style="background-color: whitesmoke;">
                     <tr>
                         <td>System ID</td>
                         <td><input type="text" th:field="*{id}" readonly="readonly" /></td>
